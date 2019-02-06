@@ -1,0 +1,43 @@
+<form #f="ngForm" (ngSubmit)="submit(f)" class="form">
+
+	<ion-row>
+		<ion-item>
+			<ion-label>
+				<ion-icon name="mail"></ion-icon>
+			</ion-label>
+			<ion-input type="email" ngModel name="email" placeholder="Email" required></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>
+				<ion-icon name="lock"></ion-icon>
+			</ion-label>
+			<ion-input type="password" ngModel name="password" placeholder="Password" required></ion-input>
+		</ion-item>
+	</ion-row>
+
+	<ion-row *ngIf="!isModal()">
+		<ion-col text-right>
+			<button ion-button small clear type="button">forgot password?</button>
+		</ion-col>
+	</ion-row>
+
+	<ion-row>
+		<ion-col>
+			<p>Sign in with</p>
+			<button ion-button clear type="button">
+				<ion-icon name="logo-facebook"></ion-icon>
+			</button>
+		</ion-col>
+	</ion-row>
+
+	<ion-row>
+		<ion-col *ngIf="!isModal()">
+			<button ion-button outline round type="button" (click)="openModal('SignUpPage')">Sign up</button>
+		</ion-col>
+		<ion-col>
+			<button ion-button round type="submit" [disabled]="!f.valid">Sign in</button>
+		</ion-col>
+	</ion-row>
+
+</form>
