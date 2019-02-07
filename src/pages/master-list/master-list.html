@@ -9,4 +9,48 @@
 
 <ion-content padding>
 
+	<ion-card margin-top margin-bottom *ngFor="let user of people">
+
+		<ion-item>
+			<ion-avatar item-start>
+				<img [src]="user.thumbnail">
+			</ion-avatar>
+			<h2>{{ user.name }}</h2>
+		</ion-item>
+
+		<img [src]="user.featured_img">
+
+		<ion-card-content>
+			<p>{{ user.bio }}</p>
+		</ion-card-content>
+
+		<ion-row>
+			<ion-col col-4>
+				<ion-item icon-start>
+					<ion-note>
+						<ion-icon name="calendar"></ion-icon>
+						{{ user.birth_year }}
+					</ion-note>
+				</ion-item>
+			</ion-col>
+			<ion-col col-4>
+				<ion-item icon-start>
+					<ion-note>
+						<ion-icon name="eye"></ion-icon>
+						{{ user.eye_color | uppercase }}
+					</ion-note>
+				</ion-item>
+			</ion-col>
+			<ion-col col-4>
+				<ion-item icon-start>
+					<ion-note>
+						<ion-icon name="transgender"></ion-icon>
+						{{ user.gender | uppercase }}
+					</ion-note>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+	</ion-card>
+
 </ion-content>
