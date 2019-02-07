@@ -7,12 +7,16 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { HttpClientModule } from '@angular/common/http';
+import { StarWarsService } from '../providers/star-wars/star-wars.service';
+
 @NgModule({
   declarations: [
     MyApp,
   ],
   imports: [
-    BrowserModule,
+	BrowserModule,
+	HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -22,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    StarWarsService
   ]
 })
 export class AppModule {}

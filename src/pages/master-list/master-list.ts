@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
+import { StarWarsService } from './../../providers/star-wars/star-wars.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-master-list',
-  templateUrl: 'master-list.html',
+	selector: 'page-master-list',
+	templateUrl: 'master-list.html',
 })
 export class MasterListPage {
 
-  constructor(
-	  public navCtrl: NavController, 
-	  public navParams: NavParams ) {
-  }
+	constructor(
+		private api: StarWarsService ) {
+		// films / people / planets / species / starships / vehicles
+		this.api.logFeed('people');
+	}
 
 }
