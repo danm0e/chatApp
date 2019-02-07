@@ -18,42 +18,50 @@ export class FormFieldsComponent {
 		private modal: ModalController) {
 	}
 
+	/** returns true if this is a modal (i.e signUp view) */
 	isModal() {
 		return this.viewCtrl.isOverlay
 	}
 
+	/** opens signUp modal, redirects to master page */
 	openModal(page: string) {
-		this.modal.create(page).present();
+		let modal = this.modal.create(page);
+		modal.present();
+		// redirect to master page
+		// fixes issue with menuToggle not working from signUp view login
+		modal.onDidDismiss( redirect => {
+			if( redirect ) {
+				this.redirectPage();
+			}
+		});
 	}
 
 	/** handles form submit */
 	submit(form: NgForm) {
-		// console.log(form.value);
-		
 		// show the loader
 		const loader = this.loadCtrl.create({
 			content: "Logging in"
 		});
 		loader.present();
-
 		// mock auth api call
 		setTimeout(() => {
 			// change views and show welcome message
 			loader.dismiss();
-			this.redirectPage();
+			this.showWelcome();
 		}, 2000);
-
 	}
 
-	/** redirects to master page and sets welcome message */
-	redirectPage() {
+	/** sets welcome message and triggers redirects to master page */
+	showWelcome() {
 		// sign in page
 		if (!this.isModal()) {
 			this.welcomeMessage = 'Welcome Back!';
+			this.redirectPage();
 		}
 		// sign up page
 		else {
-			this.viewCtrl.dismiss();
+			// close modal and pass params back for redirect
+			this.viewCtrl.dismiss('redirect');
 			this.welcomeMessage = 'Welcome!';
 		}
 		// show toast
@@ -61,8 +69,10 @@ export class FormFieldsComponent {
 			message: this.welcomeMessage,
 			duration: 2500
 		}).present();
-		// redirect
-		this.navCtrl.setRoot('MasterListPage');
 	}
 
+	/** redirects to master page */
+	redirectPage() {
+		this.navCtrl.setRoot('MasterListPage');
+	}
 }
