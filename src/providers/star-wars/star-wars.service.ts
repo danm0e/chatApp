@@ -14,9 +14,10 @@ export class StarWarsService {
 	 * makes a GET request to the API
 	 * @param {string} type – alters the payload based on category
 	 */
-	getFeed(type: string = '') {
+	getFeed(url?:string, type: string = '') {
+		url = (url) ? url : this.apiUrl; 
 		return new Promise(resolve => {
-			this.http.get(this.apiUrl + type).subscribe(
+			this.http.get(url + type).subscribe(
 				data => {
 					resolve(data);
 				},

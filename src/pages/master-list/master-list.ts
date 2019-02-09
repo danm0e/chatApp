@@ -11,7 +11,6 @@ import { User } from '../../models/user.model';
 export class MasterListPage {
 
 	people: User[] = [];
-	likeCount = 12;
 	
 	constructor(
 		private api: StarWarsService,
@@ -24,7 +23,7 @@ export class MasterListPage {
 		});
 		loader.present();
 		// make the api call
-		this.api.getFeed('people')
+		this.api.getFeed(null, 'people')
 			.then( people => {
 				// once resolved, hide the loader and push the data 
 				// to our array for looping through
@@ -33,17 +32,9 @@ export class MasterListPage {
 
 				for(let user of this.people) {
 					user.thumbnail = '//placehold.it/35x35';
-					user.featured_img = '//placehold.it/280x170';
+					user.featured_img = '//placehold.it/400x250';
 					user.bio = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 				}
-						
-				console.log(this.people)
 			});
-			
 	}
-
-	like() {
-		this.likeCount++;
-	}
-
 }

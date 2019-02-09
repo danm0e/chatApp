@@ -1,0 +1,49 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>{{ user.name }}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<img src="{{ user.featured_img }}">
+
+	<div padding>
+
+		<h6 text-center margin-vertical>{{ user.bio }}</h6>
+
+		<ion-list>
+			<ion-list-header>
+				Details
+			</ion-list-header>
+			<ion-item text-wrap *ngFor="let detail of details" class="list-item">
+
+				<div *ngIf="!isArray(detail.value) else showNestedData">
+					<ion-row>
+						<ion-col col-4 class="list-item--txt list-item--key">{{ detail.key | titlecase }}</ion-col>
+						<ion-col col-8 text-right class="list-item--txt list-item--value">{{ detail.value }}</ion-col>
+					</ion-row>
+				</div>
+
+				<ng-template #showNestedData>
+					<ion-row>
+						<ion-col col-4 class="list-item--txt list-item--key">{{ detail.key | titlecase }}</ion-col>
+						<ion-col col-8 text-right class="list-item--txt list-item--value">
+							<div *ngFor="let value of detail.value">{{ value }}</div>
+						</ion-col>
+					</ion-row>
+				</ng-template>
+
+			</ion-item>
+		</ion-list>
+
+	</div>
+
+</ion-content>
+
+<ion-footer>
+	<button ion-button navPop full>Back to Master List</button>
+</ion-footer>

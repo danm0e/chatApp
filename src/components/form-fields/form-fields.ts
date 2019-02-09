@@ -1,4 +1,4 @@
-import { NavController, NavParams, LoadingController, ToastController, ViewController, ModalController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, ViewController, ModalController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
