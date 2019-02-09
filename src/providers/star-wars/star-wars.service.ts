@@ -12,6 +12,7 @@ export class StarWarsService {
 
 	/**
 	 * makes a GET request to the API
+	 * @param {string} url – enables you to specify another end point
 	 * @param {string} type – alters the payload based on category
 	 */
 	getFeed(url?:string, type: string = '') {

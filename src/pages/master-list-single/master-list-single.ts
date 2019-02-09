@@ -19,21 +19,23 @@ export class MasterListSinglePage {
 		private api: StarWarsService) {
 	}
 
-	async ionViewWillLoad() {
+	/** gets and sets data on view load */
+	ionViewWillLoad() {
 		this.user = this.navParams.data;
-		// console.log(this.user);
-		await this.getDetails();
+		this.getDetails();
 	}
 
+	/** returns true if details is an array */
 	isArray(detail: any) {
-		// console.log(detail);
 		return Array.isArray(detail);
 	}
 
+	/** makes another api call for the current value */
 	async getNestedData(value: string) {
 		return await this.api.getFeed(value)
 	}
 
+	/** get the details for the view to loop through and display */
 	getDetails() {
 		// loop through the 
 		Object.keys(this.user)
@@ -42,8 +44,9 @@ export class MasterListSinglePage {
 					value = this.user[key],
 					tempArr = [];
 
+				// if this item has nested values, 
+				// get the actual data from the api
 				if ( this.isArray(value) ) {
-					// console.log(key, value);
 					for (let subvalue of value) {
 						let nestedData = await this.getNestedData(subvalue),
 							firstItem = Object.keys(nestedData)[0];
