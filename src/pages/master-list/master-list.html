@@ -4,12 +4,32 @@
 			<ion-icon name="menu"></ion-icon>
 		</button>
 		<ion-title>Dashboard</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only>
+				<ion-icon name="options"></ion-icon>
+			</button>
+		</ion-buttons>
 	</ion-navbar>
+
+	<ion-toolbar>
+		<ion-segment>
+			<ion-segment-button>
+				Missions
+			</ion-segment-button>
+			<ion-segment-button>
+				Notes
+			</ion-segment-button>
+			<ion-segment-button>
+				Request
+			</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-	<ion-card margin-top margin-bottom *ngFor="let user of people; let i = index;" [navPush]="'MasterListSinglePage'" [navParams]="profile[i]">
+	<ion-card margin-top margin-bottom *ngFor="let user of people; let i = index;" [navPush]="'MasterListSinglePage'"
+		[navParams]="profile[i]">
 
 		<ion-item>
 			<ion-avatar item-start>

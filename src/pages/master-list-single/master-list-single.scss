@@ -1,5 +1,12 @@
 page-master-list-single {
 
+	.intro {
+		background: color($colors, light);
+		color: color($colors, tertiary);
+		padding: 2rem;
+		border-radius: 0.5rem;
+	}
+
 	.item {
 		background: transparent;
 	}
@@ -11,5 +18,9 @@ page-master-list-single {
 	.list-item--key {
 		font-weight: bold;
 		color: color($colors, tertiary);
+	}
+
+	button {
+		margin: 0 !important;
 	}
 }

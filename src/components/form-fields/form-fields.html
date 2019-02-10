@@ -32,11 +32,11 @@
 	</ion-row>
 
 	<ion-row>
-		<ion-col *ngIf="!isModal()">
-			<button ion-button outline round type="button" (click)="openModal('SignUpPage')">Sign up</button>
+		<ion-col padding *ngIf="!isModal()">
+			<button ion-button outline block round type="button" (click)="openModal('SignUpPage')">Sign up</button>
 		</ion-col>
-		<ion-col>
-			<button ion-button round type="submit" [disabled]="!f.valid">Sign in</button>
+		<ion-col padding>
+			<button ion-button round block type="submit" [disabled]="!f.valid">Sign in</button>
 		</ion-col>
 	</ion-row>
 

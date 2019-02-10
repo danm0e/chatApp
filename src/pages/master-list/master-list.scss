@@ -1,7 +1,12 @@
 page-master-list {
 
+	.segment-button {
+		border: none !important;
+		text-transform: uppercase;
+	}
+
 	.card {
-		box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+		box-shadow: none; //0 0 1.5rem rgba(0, 0, 0, 0.2);
 	
 		+ .card {
 			margin-top: 3rem;
