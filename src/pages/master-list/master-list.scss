@@ -1,3 +1,27 @@
 page-master-list {
 
+	.card {
+		box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+	
+		+ .card {
+			margin-top: 3rem;
+		}
+
+		ion-avatar .icon {
+			$size: 40px;
+			font-size: 3.5rem;
+			padding-top : 0.2rem;
+			height: $size;
+			width: $size;
+			border-radius: $size;
+			text-align: center;
+			background-color: color($colors, tertiary);
+		}
+
+		h2 {
+			color: color($colors, tertiary);
+			font-weight: bold;
+			font-size: 2rem;
+		}
+	}
 }

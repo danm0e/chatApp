@@ -1,10 +1,15 @@
 page-master-list-single {
 
+	.item {
+		background: transparent;
+	}
+
 	.list-item--txt {
 		font-size: 1.3rem;
 	}
 
 	.list-item--key {
 		font-weight: bold;
+		color: color($colors, tertiary);
 	}
 }
