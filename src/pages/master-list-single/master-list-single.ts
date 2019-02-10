@@ -19,7 +19,6 @@ export class MasterListSinglePage {
 	/** gets and sets data on view load */
 	ionViewWillLoad() {
 		this.user = this.navParams.data;
-		console.log(this.user);
 		this.getDetails();
 	}
 
@@ -36,12 +35,10 @@ export class MasterListSinglePage {
 			.forEach( key => {
 				let formattedKey = key.replace(/_/g, ' '),
 					value = this.user[key];
-
 					// catch and format any dates
 					if( value.indexOf('000Z') > 0 ) {
 						value = this.formatDateTime(value)
 					}
-
 				// filter the data so we're not repeating anything and 
 				// we don't have any blank spaces
 				if( this.exclude.indexOf(key) < 0 && value.length > 0 ) {

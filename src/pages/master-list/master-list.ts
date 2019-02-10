@@ -67,7 +67,7 @@ export class MasterListPage {
 					let value = results[i][key],
 						tempArr = [];
 					// if this item has nested values 
-					if (this.isArray(value)) {
+					if ( this.isArray(value) ) {
 						// get the data from the api
 						for (let subvalue of value) {
 							let nestedData = await this.api.getFeed(subvalue),
@@ -76,6 +76,11 @@ export class MasterListPage {
 							tempArr.push(nestedData[firstItem]);
 						}
 						results[i][key] = tempArr;
+					}
+					// get the homeworld name
+					else if( key === 'homeworld' ){
+						let world = await this.api.getFeed(value)
+						results[i][key] = world['name'];
 					}
 				});
 			// push the data to our profile array
