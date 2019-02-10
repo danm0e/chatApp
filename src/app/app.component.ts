@@ -12,7 +12,7 @@ export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
 	rootPage: string = 'SignInPage';
-	pages: Array<{ title: string, component: string }>;
+	pages: Array<{ title: string, icon: string, component: string }>;
 
 	constructor(
 		private platform: Platform,
@@ -26,11 +26,11 @@ export class MyApp {
 
 		// used for an example of ngFor and navigation
 		this.pages = [
-			{ title: 'Dashboard', component: 'DashboardPage' },
-			{ title: 'Photos', component: 'PhotosPage' },
-			{ title: 'Available Missions', component: 'AvailableMissionsPage' },
-			{ title: 'My Missions', component: 'MyMissionsPage' },
-			{ title: 'Chat', component: 'ChatPage' }
+			{ title: 'Dashboard', icon: 'apps', component: 'MasterListPage' },
+			{ title: 'Photos', icon: 'images', component: 'PhotosPage' },
+			{ title: 'Available Missions', icon: 'compass', component: 'AvailableMissionsPage' },
+			{ title: 'My Missions', icon: 'medal', component: 'MyMissionsPage' },
+			{ title: 'Chat', icon: 'chatboxes', component: 'ChatPage' }
 		];
 
 	}

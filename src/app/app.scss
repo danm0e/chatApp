@@ -12,10 +12,41 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-.header-icon {
-    padding-top: 5rem;
 
+.content {
+    background: color($colors, secondary);
+}
+
+.menu-enabled {
+
+    .content {
+        background: color($colors, tertiary);
+	}
+	
+    .scroll-content {
+        display: flex;
+        flex-direction: column;
+		justify-content: center;
+		
+		.list button {
+			background: transparent;
+
+			.item-inner {
+				background-image: none;
+			}
+
+			.icon {
+				font-size: 2rem;
+			}
+		}
+    }
+}
+
+.header-icon {
+	padding-top: 5rem;
+	
     .icon {
-        font-size: 10rem;
+		font-size: 8rem;
+		margin-bottom: 3rem;
     }
 }

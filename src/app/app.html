@@ -1,13 +1,14 @@
 <ion-menu [content]="content">
-	<ion-header>
-		<ion-toolbar>
-			<ion-title>Menu</ion-title>
-		</ion-toolbar>
-	</ion-header>
 
 	<ion-content>
-		<ion-list>
-			<button menuClose ion-item *ngFor="let p of pages" disabled (click)="openPage(p)">
+
+		<div text-center class="header-icon">
+			<ion-icon name="chatbubbles" color="secondary"></ion-icon>
+		</div>
+
+		<ion-list no-lines padding>
+			<button menuClose ion-item icon-start *ngFor="let p of pages; let i = index;" [disabled]="i !== 0" (click)="openPage(p)">
+				<ion-icon name="{{p.icon}}" color="secondary"></ion-icon>
 				{{p.title}}
 			</button>
 		</ion-list>

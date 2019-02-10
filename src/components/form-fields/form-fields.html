@@ -3,14 +3,14 @@
 	<ion-row>
 		<ion-item>
 			<ion-label>
-				<ion-icon name="mail"></ion-icon>
+				<ion-icon name="mail" color="tertiary"></ion-icon>
 			</ion-label>
 			<ion-input type="email" ngModel name="email" placeholder="Email" required></ion-input>
 		</ion-item>
 
 		<ion-item>
 			<ion-label>
-				<ion-icon name="lock"></ion-icon>
+				<ion-icon name="lock" color="tertiary"></ion-icon>
 			</ion-label>
 			<ion-input type="password" ngModel name="password" placeholder="Password" required></ion-input>
 		</ion-item>
@@ -18,7 +18,7 @@
 
 	<ion-row *ngIf="!isModal()">
 		<ion-col text-right>
-			<button ion-button small clear type="button">forgot password?</button>
+			<button ion-button small clear color="tertiary" type="button">forgot password?</button>
 		</ion-col>
 	</ion-row>
 
