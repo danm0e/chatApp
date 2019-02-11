@@ -10,9 +10,8 @@ import { User } from '../../models/user.model';
 })
 export class MasterListPage {
 
-	people: User[] = [];
+	profile: User[] = [];
 	fetchedData: any;
-	profile = [];
 
 	constructor(
 		private api: StarWarsService,
@@ -30,18 +29,16 @@ export class MasterListPage {
 				content: 'Please wait...'
 			});
 			loader.present();
-			// make the api call
+			// get the main data
 			this.fetchedData = await this.api.getFeed(null, 'people');
-			this.people = this.fetchedData['results'];
-
+			// build the profile data
+			this.profile = await this.buildProfile();
 			// sets faux placeholder data
-			for (let user of this.people) {
-				// user.thumbnail = '//placehold.it/35x35';
-				user.featured_img = '//placehold.it/400x250/9CADBE/F5F6F9';
+			for (let user of this.profile) {
+				user.featured_img = 'http://placehold.it/400x250/9CADBE/F5F6F9';
 				user.bio = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 			}
-
-			this.profile = await this.buildProfile();
+			// hide the loader
 			loader.dismiss();
 		}
 	}
@@ -58,7 +55,7 @@ export class MasterListPage {
 	 */
 	async buildProfile() {
 		let results = this.fetchedData['results'],
-			profile = [];
+			profile: User[] = [];
 		// loop through the top level data array
 		for (let i = 0; i < results.length; i++) {
 			// loop through the object keys
